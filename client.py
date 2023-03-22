@@ -1,9 +1,12 @@
 import socket
 import threading
+import json
 
-HOST = '193.138.7.205'
-PORT = 54950
-FORMAT = 'utf-8'
+with open('config.json', 'rb') as f:
+    config = json.load(f)
+    HOST = config['server-ip']
+    PORT = config['server-port']
+    FORMAT = config['encoding-format']
 
 def sendMessage(client: socket.socket):
     while True:

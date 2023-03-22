@@ -1,9 +1,13 @@
 import socket
 import threading
+import json
 
-HOST = '10.112.221.32'
-PORT = 54950
-FORMAT = 'utf-8'
+with open('config.json', 'rb') as f:
+    config = json.load(f)
+    HOST = config['server-ip']
+    PORT = config['server-port']
+    FORMAT = config['encoding-format']
+
 
 class User:
     def __init__(self, socket: socket.socket, username:str=None):
